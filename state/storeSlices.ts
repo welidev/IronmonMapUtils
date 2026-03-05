@@ -16,6 +16,9 @@ export const mapSettingsSlice = createSlice({
     showMapPortals: false,
     showMapPortalLines: false,
     showMapPortalLinesType: MapPortalLinesType.Always,
+    highlightGifts: false,
+    highlightTrades: false,
+    showRooms: false,
     showRoutes: false,
   },
   reducers: {
@@ -45,6 +48,15 @@ export const mapSettingsSlice = createSlice({
       action: PayloadAction<MapPortalLinesType>
     ) => {
       state.showMapPortalLinesType = action.payload;
+    },
+    setHighlightGifts: (state, action: PayloadAction<boolean>) => {
+      state.highlightGifts = action.payload;
+    },
+    setHighlightTrades: (state, action: PayloadAction<boolean>) => {
+      state.highlightTrades = action.payload;
+    },
+    setShowRooms: (state, action: PayloadAction<boolean>) => {
+      state.showRooms = action.payload;
     },
     setShowRoutes: (state, action: PayloadAction<boolean>) => {
       state.showRoutes = action.payload;
