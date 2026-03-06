@@ -28,7 +28,7 @@ const convertItemTypeToClassName = (itemType: ItemType) => {
 };
 
 export const Item = React.memo((props: ItemProps) => {
-  const { x, y, height, width, spawnInfo, type } = props;
+  const { x, y, height, width, spawnInfo, type, name, url } = props;
   const uniqueId = `Item_${x}_${y}_${type}`;
   const marks = React.useRef<EntityMarkIcon[]>([
     "none",
@@ -89,7 +89,7 @@ export const Item = React.memo((props: ItemProps) => {
         </foreignObject>
         <EntityMark x={x + 1} y={y} size={12} mark={currentMark} />
       </InteractablePolygon>
-      {(spawnInfo || DEBUG_MODE) && (
+      {(name || spawnInfo || DEBUG_MODE) && (
         <Tooltip
           x={x}
           y={y}
@@ -97,7 +97,18 @@ export const Item = React.memo((props: ItemProps) => {
           targetWidth={width}
           targetHeight={height}
         >
-          <div>{spawnInfo}</div>
+          {name && <div style={{ fontWeight: "bold" }}>{name}</div>}
+          {spawnInfo && <div>{spawnInfo}</div>}
+          {url && (
+            <a
+              href={url}
+              target="_blank"
+              rel="noreferrer"
+              style={{ fontSize: "7px" }}
+            >
+              Bulbapedia
+            </a>
+          )}
         </Tooltip>
       )}
     </>

@@ -72,6 +72,8 @@ export interface ItemData {
   x: number; // x coordinate of the top-left pixel of this item
   y: number; // y coordinate of the top-left pixel of this item
   type: ItemType; // Type of the item
+  name?: string; // e.g. "Potion", "TM31 Brick Break"
+  url?: string; // Bulbapedia link
   spawnInfo?: string; // Special spawn rate information
 }
 
@@ -79,6 +81,58 @@ export enum ItemType {
   Normal = 0,
   TM = 1,
   Hidden = 2,
+}
+
+/**
+ * Pokemon
+ */
+export type Pokemon = {
+  name: string;
+  level: number;
+  heldItem?: string;
+};
+
+/**
+ * Gift
+ */
+export type ItemCategory = "keyobj" | "medicine" | "general" | "berry" | "ball";
+
+export type GiftItem = {
+  name: string;
+  category?: ItemCategory;
+};
+
+export type GiftReceivable = Pokemon | GiftItem[] | string;
+
+export interface GiftData {
+  x: number;
+  y: number;
+  receive: GiftReceivable;
+  conditions?: string;
+  url?: string;
+  tooltipPosition?: TooltipPosition;
+}
+
+/**
+ * Trade
+ */
+export interface TradeData {
+  x: number;
+  y: number;
+  receive: Pokemon;
+  give: Pokemon;
+  conditions?: string;
+  url?: string;
+  tooltipPosition?: TooltipPosition;
+}
+
+/**
+ * Room
+ */
+export interface RoomData {
+  name: string;
+  points: [[number, number], [number, number]]; // [[x1, y1], [x2, y2]]
+  url?: string;
 }
 
 /**

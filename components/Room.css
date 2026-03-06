@@ -1,0 +1,19 @@
+.room-rect {
+  fill: none;
+  stroke: none;
+  pointer-events: none;
+}
+
+.room-rect.visible {
+  fill: rgba(100, 149, 237, 0.08);
+  stroke: rgba(100, 149, 237, 0.6);
+  stroke-width: 2;
+  stroke-dasharray: 6 3;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.room-name {
+  font-weight: bold;
+  text-align: center;
+}
